@@ -6,6 +6,7 @@ use Magento\Framework\Message\ManagerInterface;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use PixelPerfect\DiscountExclusion\Api\ConfigInterface;
 use PixelPerfect\DiscountExclusion\Api\Data\BypassResultType;
 use PixelPerfect\DiscountExclusion\Api\ExclusionResultCollectorInterface;
 use PixelPerfect\DiscountExclusion\Service\ExclusionMessageBuilder;
@@ -16,17 +17,21 @@ class ExclusionMessageBuilderTest extends TestCase
     private ExclusionResultCollectorInterface&MockObject $resultCollector;
     private ManagerInterface&MockObject $messageManager;
     private PriceCurrencyInterface&MockObject $priceCurrency;
+    private ConfigInterface&MockObject $config;
 
     protected function setUp(): void
     {
         $this->resultCollector = $this->createMock(ExclusionResultCollectorInterface::class);
         $this->messageManager = $this->createMock(ManagerInterface::class);
         $this->priceCurrency = $this->createMock(PriceCurrencyInterface::class);
+        $this->config = $this->createMock(ConfigInterface::class);
+        $this->config->method('isMessagesEnabled')->willReturn(true);
 
         $this->builder = new ExclusionMessageBuilder(
             $this->resultCollector,
             $this->messageManager,
             $this->priceCurrency,
+            $this->config,
         );
     }
 
