@@ -15,7 +15,6 @@ use PixelPerfect\DiscountExclusion\Api\StrategyEligibilityGuardInterface;
 /**
  * Class AmpromoExclusionChecker
  *
- * @package PixelPerfect\DiscountExclusion\Model\StrategyEligibilityGuards
  */
 class Ampromo implements StrategyEligibilityGuardInterface
 {

@@ -131,10 +131,16 @@ class ValidatorPlugin
         return match ($bypassResult->type) {
             BypassResultType::STACKING_FALLBACK => $proceed($item, $rule),
             BypassResultType::EXISTING_BETTER => $this->handleBypassExistingBetter(
-                $subject, $item, $rule, $couponCode, $bypassResult
+                $subject,
+                $item, $rule, $couponCode, $bypassResult
             ),
             BypassResultType::ADJUSTED => $this->handleBypassAdjusted(
-                $subject, $proceed, $item, $rule, $couponCode, $bypassResult
+                $subject,
+                $proceed,
+                $item,
+                $rule,
+                $couponCode,
+                $bypassResult
             ),
         };
     }

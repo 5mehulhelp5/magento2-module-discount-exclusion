@@ -1,52 +1,73 @@
 {
-  "name": "pixelperfectat/magento2-module-discount-exclusion",
-  "description": "Advanced Magento 2 module for preventing additional discounts on already discounted products using a flexible, extensible strategy pattern. Provides out-of-the-box support for excluding products with special prices or catalog price rules from further discounting via shopping cart rules.",
-  "type": "magento2-module",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "André Flitsch",
-      "email": "pixelhed@pixelperfect.at",
-      "role": "Developer"
-    }
-  ],
-  "support": {
-    "email": "pixelhed@pixelperfect.at",
-    "issues": "https://github.com/pixelperfectat/magento2-module-discount-exclusion/issues"
-  },
-  "require": {
-    "php": "^8.2.0",
-    "magento/framework": "^103.0",
-    "magento/module-catalog": "^104.0",
-    "magento/module-sales-rule": "^101.0"
-  },
-  "autoload": {
-    "files": [
-      "src/registration.php"
+    "name": "pixelperfectat/magento2-module-discount-exclusion",
+    "description": "Advanced Magento 2 module for preventing additional discounts on already discounted products using a flexible, extensible strategy pattern. Provides out-of-the-box support for excluding products with special prices or catalog price rules from further discounting via shopping cart rules.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "André Flitsch",
+            "email": "pixelhed@pixelperfect.at",
+            "role": "Developer"
+        }
     ],
-    "psr-4": {
-      "PixelPerfect\\DiscountExclusion\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "PixelPerfect\\DiscountExclusion\\Test\\": "Test"
-    }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^10.0",
-    "phpstan/phpstan": "^1.12",
-    "bitexpert/phpstan-magento": "^0.32"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://repo.magento.com/"
-    }
-  ],
-  "config": {
-    "allow-plugins": {
-      "magento/composer-dependency-version-audit-plugin": true
-    }
-  }
+    "support": {
+        "email": "pixelhed@pixelperfect.at",
+        "issues": "https://github.com/pixelperfectat/magento2-module-discount-exclusion/issues"
+    },
+    "require": {
+        "php": "^8.2",
+        "magento/framework": "^103.0",
+        "magento/module-catalog": "^104.0",
+        "magento/module-sales-rule": "^101.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "pixelperfectat/coding-standard": "^0.1.0"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "PixelPerfect\\DiscountExclusion\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PixelPerfect\\DiscountExclusion\\Test\\": "Test"
+        }
+    },
+    "scripts": {
+        "lint": "parallel-lint --exclude vendor .",
+        "cs": "phpcs",
+        "cs:fix": "phpcbf",
+        "stan": "phpstan analyse",
+        "test": "phpunit",
+        "ci:validate": "@composer validate --no-check-publish",
+        "check": [
+            "@ci:validate",
+            "@lint",
+            "@cs",
+            "@stan",
+            "@test"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "cweagans/composer-patches": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "laminas/laminas-dependency-plugin": true,
+            "magento/*": true,
+            "php-http/discovery": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ]
 }
