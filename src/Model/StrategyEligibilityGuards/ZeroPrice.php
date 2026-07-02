@@ -15,7 +15,6 @@ use PixelPerfect\DiscountExclusion\Api\StrategyEligibilityGuardInterface;
 /**
  * Class ZeroPriceChecker
  *
- * @package PixelPerfect\DiscountExclusion\Model\Precondition
  */
 class ZeroPrice implements StrategyEligibilityGuardInterface
 {
