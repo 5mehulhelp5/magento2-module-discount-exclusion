@@ -1,8 +1,8 @@
 includes:
-    - vendor/bitexpert/phpstan-magento/extension.neon
+    # Shared level, bootstrap (bitexpert/phpstan-magento) and defaults.
+    - vendor/pixelperfectat/coding-standard/phpstan.neon
+    - phpstan-baseline.neon
 
 parameters:
-    level: 6
     paths:
         - src
-    treatPhpDocTypesAsCertain: false
